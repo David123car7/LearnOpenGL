@@ -25,3 +25,4 @@ cmake --build build
 # Librarys
 
 - [GLFW](https://github.com/glfw/glfw) 
+- [GLAD](https://github.com/Dav1dde/glad) 

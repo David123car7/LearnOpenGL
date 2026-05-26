@@ -1,3 +1,4 @@
+#CMakeFiles
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -12,5 +13,8 @@ _deps
 CMakeUserPresets.json
 build/
 .cache/
+
+#Clang
+.clang-format
 
 
