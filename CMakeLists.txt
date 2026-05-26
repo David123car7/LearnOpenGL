@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(learn-opengl)
+set(CMAKE_CXX_STANDARD_20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+find_package(GLFW3 REQUIRED)
+add_executable(learn-opengl src/Main.cpp)
+target_link_libraries(learn-opengl PRIVATE glfw)
