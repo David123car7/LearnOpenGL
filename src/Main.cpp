@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include "LearnOpenGL/GLAD.h"
 #include "LearnOpenGL/GLFW.h"
-#include "LearnOpenGL/Shaders.h"
+#include "LearnOpenGL/Shader.h"
 #include "LearnOpenGL/Mesh.h"
 
 int main() {
@@ -14,10 +14,8 @@ int main() {
   GLFWwindow *window = LOGL::GLFW::CreateWindow(800, 800, "LearnOpenGL");
   LOGL::GLAD::InitGlad();
 
-  unsigned int vertexShader = LOGL::Shaders::SetupVertexShader();
-  unsigned int fragmentShader = LOGL::Shaders::SetupFragmentShader();
-  unsigned int shaderProgram =
-      LOGL::Shaders::SetupShaderProgram(vertexShader, fragmentShader);
+  LOGL::Shader shader{"res/shaders/VertexShader.glsl",
+                      "res/shaders/FragmentShader.glsl"};
 
   float vertices[] = {
       0.5f,  0.5f,  0.0f, // top right
@@ -34,16 +32,12 @@ int main() {
 
   while (!glfwWindowShouldClose(window)) {
     LOGL::GLFW::HandleInput(window);
-    glUseProgram(shaderProgram);
+    shader.use();
     glBindVertexArray(cube.VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
-
-  // Delete Shaders
-  glDeleteShader(vertexShader);
-  glDeleteShader(fragmentShader);
 
   glfwTerminate();
   return 0;

@@ -1,8 +1,7 @@
 #include "LearnOpenGL/Mesh.h"
 #include <cstddef>
 
-using LOGL::Mesh;
-
+namespace LOGL {
 Mesh::Mesh(size_t size_vert, float vertices[], size_t size_indi,
            unsigned int indices[]) {
   glGenVertexArrays(1, &VAO);
@@ -22,3 +21,4 @@ Mesh::Mesh(size_t size_vert, float vertices[], size_t size_indi,
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,
                0); // this must be after unbinding the VAO
 }
+} // namespace LOGL
